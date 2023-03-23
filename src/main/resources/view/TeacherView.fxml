@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.TeacheViewController">
+<AnchorPane prefHeight="640.0" prefWidth="600.0" style="-fx-background-color: Grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.TeacheViewController">
    <children>
       <Button fx:id="btnNewTeacher" layoutX="32.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnNewTeacherOnAction" prefHeight="24.0" prefWidth="177.0" text="+ New Teacher" textFill="#b50bf8" />
       <Label alignment="CENTER" layoutX="129.0" layoutY="39.0" prefHeight="16.0" prefWidth="343.0" text="Manage Teachers" textFill="#cd1c1c">
@@ -20,7 +20,7 @@
       <HBox layoutX="35.0" layoutY="152.0" prefHeight="30.0" prefWidth="531.0">
          <children>
             <Label prefHeight="22.0" prefWidth="75.0" text="ID" />
-            <TextField fx:id="txtID" prefHeight="24.0" prefWidth="428.0" />
+            <TextField fx:id="txtID" editable="false" prefHeight="24.0" prefWidth="428.0" />
          </children>
       </HBox>
       <HBox layoutX="35.0" layoutY="231.0" prefHeight="30.0" prefWidth="531.0">

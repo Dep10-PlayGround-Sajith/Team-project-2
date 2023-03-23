@@ -7,3 +7,6 @@ CREATE TABLE Teacher
     address VARCHAR(500) NOT NULL
 
 );
+INSERT INTO  Teacher VALUES
+                            ('T001','Sampath','GALLE'),
+                            ('T002','Kasun','GALLE');
