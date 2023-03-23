@@ -16,44 +16,38 @@ public class DBConnection {
     private final Connection connection;
 
     private DBConnection(){
+        Properties configurations =new Properties();
+        File confiFile = new File("application.properties");
         try {
-            File file = new File( "application.properties" );
-            FileReader fr = new FileReader( file );
-            Properties properties = new Properties();
-            properties.load( fr );
+            FileReader fr = new FileReader(confiFile);
+            configurations.load(fr);
             fr.close();
 
-            String host = properties.getProperty( "mysql.host", "dep10.lk" );
-            String port = properties.getProperty("mysql.port", "3306");
-            String database = properties.getProperty("mysql.database", "dep10_git");
-            String username = properties.getProperty("mysql.username", "root");
-            String password = properties.getProperty("mysql.password", "");
+            String host = configurations.getProperty("mysql.host", "localhost");
+            String port = configurations.getProperty("mysql.port", "3306");
+            String database = configurations.getProperty("mysql.database", "dep10_git");
+            String username = configurations.getProperty("mysql.username", "root");
+            String password = configurations.getProperty("mysql.password", "mysql");
 
+            String queryString="createDatabaseIfNotExist=true&allowMultiQueries=true";
+            String url=String.format("jdbc:mysql://%s:%s/%s?%s",host,port,database,queryString);
+            connection= DriverManager.getConnection(url,username,password);
 
-            connection = DriverManager.getConnection( "jdbc:mysql://"+host+":"+port+"/"+database+"?createDatabaseIfNotExist=true&allowMultiQueries=true",
-                    username,password);
+            //connection= DriverManager.getConnection("jdbc:mysql://dep10.lk:3306/dep10_git?createDatabaseIfNotExist=true&allowMultiQueries=true","root","mysql");
         } catch (FileNotFoundException e) {
-            new Alert( Alert.AlertType.ERROR,"Configuration file doesn't exist" ).showAndWait();
-            e.printStackTrace();
-            System.exit( 1 );
-            throw new RuntimeException( e );
-        }catch (IOException e){
-            new Alert( Alert.AlertType.ERROR,"Failed to read configuration file" ).showAndWait();
-            e.printStackTrace();
-            System.exit( 1 );
-            throw new RuntimeException( e );
+            new Alert(Alert.AlertType.ERROR,"Configuration file does not exists").showAndWait();
+            System.exit(1);
+            throw new RuntimeException(e);
         } catch (SQLException e) {
-            new Alert( Alert.AlertType.ERROR,
-                    "Failed to establish the database connection ,try again. if the problem persist please contact the technical team" ).showAndWait();
-            throw new RuntimeException( e );
+            new Alert(Alert.AlertType.ERROR,"Failed to obtained a database connection,try again.if the problem persist contact developer").showAndWait();
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            new Alert( Alert.AlertType.ERROR,"Failed to read Configurations").showAndWait();
+            throw new RuntimeException(e);
         }
     }
-
     public static DBConnection getInstance(){
-        return (dbconnection==null) ?dbconnection = new DBConnection(): dbconnection;
+        return (dbconnection==null)? dbconnection=new DBConnection():dbconnection;
     }
-
-    public Connection getConnection(){
-        return connection;
-    }
+    public Connection getConnection(){return connection;}
 }

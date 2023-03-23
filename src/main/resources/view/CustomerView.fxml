@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="529.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.CustomerViewController">
    <children>
       <Button fx:id="BtnNewCustomer" layoutX="23.0" layoutY="68.0" mnemonicParsing="false" onAction="#BtnNewCustomerOnAction" prefHeight="40.0" prefWidth="154.0" text="+NEW CUSTOMER" />
@@ -24,7 +23,7 @@
             <HBox prefHeight="18.0" prefWidth="718.0" spacing="15.0">
                <children>
                   <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="167.0" text="ID :" />
-                  <TextField fx:id="txtId" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtId" editable="false" maxWidth="1.7976931348623157E308" promptText="Generated ID" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox prefHeight="18.0" prefWidth="718.0" spacing="15.0">
@@ -42,7 +41,7 @@
             <HBox prefHeight="35.0" prefWidth="718.0" spacing="15.0">
                <children>
                   <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="167.0" />
-                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="106.0" text="SAVE" />
+                  <Button fx:id="btnSave" defaultButton="true" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="106.0" text="SAVE" />
                   <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="34.0" prefWidth="106.0" text="DELETE" />
                </children>
             </HBox>
