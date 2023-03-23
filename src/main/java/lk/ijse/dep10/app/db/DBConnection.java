@@ -1,4 +1,4 @@
-package lk.ijse.dep10.app.controller.db;
+package lk.ijse.dep10.app.db;
 
 import javafx.scene.control.Alert;
 
