@@ -15,7 +15,6 @@ import lk.ijse.dep10.app.db.db.DBConnection;
 import lk.ijse.dep10.app.model.Student;
 
 import java.sql.*;
-import java.time.LocalDate;
 
 public class ManageStudentSceneController {
 
@@ -23,7 +22,7 @@ public class ManageStudentSceneController {
     public Button btnDelete;
     public AnchorPane root;
     @FXML
-    private Button btnNewStuden;
+    private Button btnNewStudent;
 
     @FXML
     private TableView<Student> tblStudent;
@@ -40,6 +39,9 @@ public class ManageStudentSceneController {
     public void initialize() {
 
         btnDelete.setDisable(true);
+        btnSave.setDisable(true);
+        txtName.setDisable(true);
+        txtAddress.setDisable(true);
 
 //        txtSearch.textProperty().addListener((value,previous,current)->{
 //            Connection connection= DBConnection.getInstance().getConnection();
@@ -64,7 +66,6 @@ public class ManageStudentSceneController {
 //                throw new RuntimeException(e);
 //            }
 //        });
-
         /* Column mapping */
         tblStudent.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
         tblStudent.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -75,8 +76,8 @@ public class ManageStudentSceneController {
 
         /* Setup keyboard shortcuts */
         Platform.runLater(() -> {
-            root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_ANY), () -> btnNewStuden.fire());
-            root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> btnNewStuden.fire());
+            root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_ANY), () -> btnNewStudent.fire());
+            root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> btnNewStudent.fire());
             root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.F1), () -> tblStudent.requestFocus());
         });
 
@@ -106,7 +107,7 @@ public class ManageStudentSceneController {
                 studentList.add(new Student(id, name, address));
             }
 
-            Platform.runLater(()->btnNewStuden.fire());
+            Platform.runLater(()-> btnNewStudent.fire());
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -142,12 +143,70 @@ public class ManageStudentSceneController {
 
     @FXML
     void btnNewStudentOnAction(ActionEvent event) {
+        ObservableList<Student> studentList=tblStudent.getItems();
+        String newId=(studentList.isEmpty()? "S001":String.format("S%03d",Integer.parseInt(studentList.get(studentList.size()-1).getId().substring(1))+1));
 
+        txtAddress.setDisable(false);
+        txtName.setDisable(false);
+        txtId.setText(newId+"");
+        txtName.clear();
+        txtAddress.clear();
+        btnSave.setDisable(false);
+        btnDelete.setDisable(false);
+
+        tblStudent.getSelectionModel().clearSelection();
+
+        txtName.requestFocus();
     }
 
     public void btnDeleteOnAction(ActionEvent event) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            Statement stm=connection.createStatement();
+            String sql="DELETE FROM Student WHERE id='%s'";
+            sql=String.format(sql,tblStudent.getSelectionModel().getSelectedItem().getId());
+            stm.executeUpdate(sql);
+            tblStudent.getItems().remove(tblStudent.getSelectionModel().getSelectedItem());
+            if (tblStudent.getItems().isEmpty()) btnNewStudent.fire();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,"Failed to Delete the Student,try Again!").show();
+        }
     }
 
     public void btnSaveOnAction(ActionEvent event) {
+        if (!isDataValid())return;
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            Student student = new Student(txtId.getText(), txtName.getText(),txtAddress.getText());
+
+            Statement stm = connection.createStatement();
+
+            Student selectedStudent=tblStudent.getSelectionModel().getSelectedItem();
+
+            if (selectedStudent==null) {
+                String sql="INSERT INTO Student VALUES('%s','%s','%s')";
+                sql = String.format(sql, student.getId(), student.getName(), student.getAddress());
+                stm.executeUpdate(sql);
+                tblStudent.getItems().add(student);
+
+            }else {
+                String sql ="UPDATE Student SET name='%s',address='%s' WHERE id=%d";
+                sql=String.format(sql,student.getName(),student.getAddress(),student.getId());
+                stm.executeUpdate(sql);
+
+                ObservableList<Student> studentList=tblStudent.getItems();
+                int selectedStudentIndex=studentList.indexOf(selectedStudent);
+                studentList.set(selectedStudentIndex, student);
+                tblStudent.refresh();
+
+            }
+            btnNewStudent.fire();
+        }catch (Exception e){
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR,"Failed to save Student details").showAndWait();
+            Platform.exit();
+        }
     }
 }
