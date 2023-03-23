@@ -11,7 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.dep10.app.db.db.DBConnection;
+import lk.ijse.dep10.app.db.DBConnection;
 import lk.ijse.dep10.app.model.Student;
 
 import java.sql.*;
