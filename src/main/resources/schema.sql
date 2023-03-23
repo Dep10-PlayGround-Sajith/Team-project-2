@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS Employee(
+    id VARCHAR(50) PRIMARY KEY ,
+    name VARCHAR(100) NOT NULL ,
+    address VARCHAR(100) NOT NULL
+);
