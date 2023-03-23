@@ -2,4 +2,8 @@
 target/
 out/
 *.iml
+<<<<<<< HEAD
 application.properties
+=======
+application.properties
+>>>>>>> refs/remotes/origin/main
