@@ -91,3 +91,7 @@
 #errorLabel {
     -fx-font-family: "Chilanka";
 }
+.invalid {
+    -fx-border-color: red !important;
+    -fx-text-fill: red;
+}
