@@ -23,11 +23,11 @@ public class DBConnection {
             configurations.load(fr);
             fr.close();
 
-            String host = configurations.getProperty("dep10.sas.db.host", "localhost");
-            String port = configurations.getProperty("dep10.sas.db.port", "3306");
-            String database = configurations.getProperty("dep10.sas.db.name", "dep10_git");
-            String username = configurations.getProperty("dep10.sas.db.username", "root");
-            String password = configurations.getProperty("dep10.sas.db.password", "mysql");
+            String host = configurations.getProperty("mysql.host", "localhost");
+            String port = configurations.getProperty("mysql.port", "3306");
+            String database = configurations.getProperty("mysql.name", "dep10_git");
+            String username = configurations.getProperty("mysql.username", "root");
+            String password = configurations.getProperty("mysql.password", "mysql");
 
             String queryString="createDatabaseIfNotExist=true&allowMultiQueries=true";
             String url=String.format("jdbc:mysql://%s:%s/%s?%s",host,port,database,queryString);
