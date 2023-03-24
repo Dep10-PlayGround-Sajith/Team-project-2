@@ -77,7 +77,7 @@ public class ManageStudentSceneController {
         /* Setup keyboard shortcuts */
         Platform.runLater(() -> {
             root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_ANY), () -> btnNewStudent.fire());
-            root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> btnNewStudent.fire());
+            root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY), () -> btnSave.fire());
             root.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.F1), () -> tblStudent.requestFocus());
         });
 
