@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="529.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.CustomerViewController">
+<AnchorPane prefHeight="529.0" prefWidth="748.0" stylesheets="@../style/CustomerViewStyles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep10.app.controller.CustomerViewController">
    <children>
-      <Button fx:id="BtnNewCustomer" layoutX="23.0" layoutY="68.0" mnemonicParsing="false" onAction="#BtnNewCustomerOnAction" prefHeight="40.0" prefWidth="154.0" text="+NEW CUSTOMER" />
+      <Button fx:id="BtnNewCustomer" layoutX="23.0" layoutY="68.0" mnemonicParsing="false" onAction="#BtnNewCustomerOnAction" prefHeight="40.0" prefWidth="154.0" stylesheets="@../style/CustomerViewStyles.css" text="+NEW CUSTOMER" />
       <Label alignment="CENTER" layoutX="6.0" layoutY="37.0" prefHeight="25.0" prefWidth="727.0" text="CUSTOMER MANAGEMENT" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="37.0">
          <font>
             <Font name="System Bold Italic" size="20.0" />

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,8 +27,9 @@ public class DashbordViewController {
     @FXML
     void btnCustomerOnAction(ActionEvent event) throws IOException {
         Scene scene = new Scene( new FXMLLoader( getClass().getResource( "/view/CustomerView.fxml" ) ).load() );
-        Stage stage = (Stage) btnCustomer.getScene().getWindow();
-        stage.setTitle( "Customer Management" );
+        Stage stage = new Stage();
+        stage.initModality( Modality.APPLICATION_MODAL );
+        stage.setTitle( "Customers Management" );
         stage.setScene( scene );
         stage.show();
         stage.centerOnScreen();
@@ -37,8 +39,9 @@ public class DashbordViewController {
     @FXML
     void btnEmployeeOnAction(ActionEvent event) throws IOException {
         Scene scene = new Scene( new FXMLLoader( getClass().getResource( "/view/EmployeeView.fxml" ) ).load() );
-        Stage stage = (Stage) btnCustomer.getScene().getWindow();
-        stage.setTitle( "Employee Management" );
+        Stage stage = new Stage();
+        stage.initModality( Modality.APPLICATION_MODAL );
+        stage.setTitle( "Employees Management" );
         stage.setScene( scene );
         stage.show();
         stage.centerOnScreen();
@@ -46,12 +49,26 @@ public class DashbordViewController {
     }
 
     @FXML
-    void btnStudentOnAction(ActionEvent event) {
+    void btnStudentOnAction(ActionEvent event) throws IOException {
+        Scene scene = new Scene( new FXMLLoader( getClass().getResource( "/view/ManageStudentScene.fxml" ) ).load() );
+        Stage stage = new Stage();
+        stage.initModality( Modality.APPLICATION_MODAL );
+        stage.setTitle( "Students Management" );
+        stage.setScene( scene );
+        stage.show();
+        stage.centerOnScreen();
 
     }
 
     @FXML
-    void btnTeacherOnAction(ActionEvent event) {
+    void btnTeacherOnAction(ActionEvent event) throws IOException {
+        Scene scene = new Scene( new FXMLLoader( getClass().getResource( "/view/TeacherView.fxml" ) ).load() );
+        Stage stage = new Stage();
+        stage.initModality( Modality.APPLICATION_MODAL );
+        stage.setTitle( "Teachers Management" );
+        stage.setScene( scene );
+        stage.show();
+        stage.centerOnScreen();
 
     }
 

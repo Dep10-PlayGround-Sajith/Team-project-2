@@ -4,12 +4,12 @@
     -fx-font-size: 14px;
 }
 
-#BtnNewCustomer {
+#btnNewStudent {
     -fx-background-color: green;
     -fx-text-fill: white;
 }
 
-#BtnNewCustomer:hover {
+#btnNewStudent:hover {
     -fx-background-color: rgba(0, 128, 0, 0.8);
 }
 
@@ -31,12 +31,12 @@
     -fx-background-color: rgba(203, 0, 0, 0.8);;
 }
 
-.text-field {
+.text-field, #txtDOB {
     -fx-background-color: white;
     -fx-border-color: lightgray;
 }
 
-.text-field:focused{
+.text-field:focused, #txtDOB:focused {
     -fx-border-color: #019de0;
 }
 
@@ -47,6 +47,9 @@
 .center{
     -fx-alignment: center;
 }
-.text-field.invalid:focused, #txtDOB.invalid:focused{
+.text-field.invalid:focused#Dob.invalid:focused{
     -fx-border-color: red;
+}
+.radio-button{
+    -fx-border-width: 0;
 }

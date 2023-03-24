@@ -25,7 +25,9 @@ public class DBConnection {
 
             String host = configurations.getProperty("mysql.host", "localhost");
             String port = configurations.getProperty("mysql.port", "3306");
+
             String database = configurations.getProperty("mysql.database", "dep10_git");
+
             String username = configurations.getProperty("mysql.username", "root");
             String password = configurations.getProperty("mysql.password", "mysql");
 
@@ -34,20 +36,25 @@ public class DBConnection {
             connection= DriverManager.getConnection(url,username,password);
 
             //connection= DriverManager.getConnection("jdbc:mysql://dep10.lk:3306/dep10_git?createDatabaseIfNotExist=true&allowMultiQueries=true","root","mysql");
+
         } catch (FileNotFoundException e) {
             new Alert(Alert.AlertType.ERROR,"Configuration file does not exists").showAndWait();
             System.exit(1);
             throw new RuntimeException(e);
         } catch (SQLException e) {
+
             new Alert(Alert.AlertType.ERROR,"Failed to obtained a database connection,try again.if the problem persist contact developer").showAndWait();
             throw new RuntimeException(e);
         } catch (IOException e) {
-            new Alert( Alert.AlertType.ERROR,"Failed to read Configurations").showAndWait();
-            throw new RuntimeException(e);
+            new Alert( Alert.AlertType.ERROR, "Failed to read Configurations" ).showAndWait();
+
+            new Alert( Alert.AlertType.ERROR, "FAiled to obtained a database connection,try again.if the problem persist contact developer" ).showAndWait();
+            throw new RuntimeException( e );
         }
     }
     public static DBConnection getInstance(){
         return (dbconnection==null)? dbconnection=new DBConnection():dbconnection;
     }
     public Connection getConnection(){return connection;}
+
 }

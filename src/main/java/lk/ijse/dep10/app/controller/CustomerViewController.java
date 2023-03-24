@@ -168,7 +168,7 @@ public class CustomerViewController {
             txtAddress.getStyleClass().add( "invalid" );
         }
 
-        if (!name.matches( "[A-Za-z]+" )) {
+        if (!name.matches( "[A-Za-z ]+" )) {
             isDataValid = false;
             txtName.requestFocus();
             txtName.getStyleClass().add( "invalid" );

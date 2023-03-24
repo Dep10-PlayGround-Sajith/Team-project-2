@@ -1,5 +1,26 @@
+
 CREATE TABLE IF NOT EXISTS Customer (
      id VARCHAR(20) PRIMARY KEY,
      name VARCHAR(100) NOT NULL ,
     address VARCHAR(300) NOT NULL
     );
+
+CREATE TABLE IF NOT EXISTS Student(
+  id VARCHAR(50) PRIMARY KEY ,
+  name VARCHAR(200) NOT NULL ,
+  address VARCHAR(500) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Employee(
+    id VARCHAR(50) PRIMARY KEY ,
+    name VARCHAR(100) NOT NULL ,
+    address VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Teacher(
+
+    id      VARCHAR(50) PRIMARY KEY,
+    name    VARCHAR(100) NOT NULL,
+    address VARCHAR(500) NOT NULL
+
+);
