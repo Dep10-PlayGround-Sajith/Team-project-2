@@ -130,7 +130,7 @@ public class ManageStudentSceneController {
             txtAddress.getStyleClass().add("invalid");
         }
 
-        if (!name.strip().matches("[A-Za-z]+")){
+        if (!name.strip().matches("[A-Za-z .]+")){
             isDataValid=false;
             txtName.getStyleClass().add("invalid");
             txtName.selectAll();

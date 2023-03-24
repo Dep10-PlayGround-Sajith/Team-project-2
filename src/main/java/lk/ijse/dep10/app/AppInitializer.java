@@ -18,10 +18,10 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeView.fxml")).load()));
-        primaryStage.show();
-        primaryStage.centerOnScreen();
-        primaryStage.setTitle("Employee Details");
+//        primaryStage.setScene(new Scene(new FXMLLoader(getClass().getResource("/view/EmployeeView.fxml")).load()));
+//        primaryStage.show();
+//        primaryStage.centerOnScreen();
+//        primaryStage.setTitle("Employee Details");
 
         try {
             Scene scene = new Scene(new FXMLLoader().load(getClass().getResource("/view/ManageStudentScene.fxml")));
@@ -33,10 +33,10 @@ public class AppInitializer extends Application {
             e.printStackTrace();
             System.out.println("FXML LOADR error");
         }
-        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/TeacherView.fxml"))));
-        primaryStage.setTitle("JDBC Assignment");
-        primaryStage.show();
-        primaryStage.centerOnScreen();
+//        primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/TeacherView.fxml"))));
+//        primaryStage.setTitle("JDBC Assignment");
+//        primaryStage.show();
+//        primaryStage.centerOnScreen();
 
     }
 
