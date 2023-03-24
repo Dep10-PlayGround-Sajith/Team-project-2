@@ -36,9 +36,9 @@ public class DashbordViewController {
 
     @FXML
     void btnEmployeeOnAction(ActionEvent event) throws IOException {
-        Scene scene = new Scene( new FXMLLoader( getClass().getResource( "/view/StudentView.fxml" ) ).load() );
+        Scene scene = new Scene( new FXMLLoader( getClass().getResource( "/view/EmployeeView.fxml" ) ).load() );
         Stage stage = (Stage) btnCustomer.getScene().getWindow();
-        stage.setTitle( "Student Management" );
+        stage.setTitle( "Employee Management" );
         stage.setScene( scene );
         stage.show();
         stage.centerOnScreen();
